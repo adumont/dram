@@ -1,3 +1,5 @@
+![](pics/4images.jpg)
+
 - [Drive a DRAM module with Arduino](#drive-a-dram-module-with-arduino)
   - [Reference Material](#reference-material)
   - [Circuit](#circuit)
@@ -11,20 +13,20 @@ In this project I'm driving an old 1MB DRAM SIMM memory module with an Arduino U
 
 ![](pics/IMG_20200217_010042.jpg)
 
-The module I use is a KMM591000BN-7 manufactured by Samsungs Electronics: it has a total capacity of 1M bit x 9: 1M x (8bits + 1 parity bit).
+The module I use is a KMM591000BN-7 manufactured by Samsungs Electronics in 10/1994.
 
-It consists of two KM44C1000BJ 1Mx4 modules, and one KM41C1000CJ 1Mx1.
+It consists of two KM44C1000BJ 1Mx4 modules, and one KM41C1000CJ 1Mx1, so it has a total capacity of 1M bit x 9: 1M x (8bits + 1 parity bit).
 
 I have soldered a 30-pins male header so I can plug it on a breadboard.
 
 ## Reference Material
 
-| Link                                     | Description                  | Author               |
-| :--------------------------------------- | ---------------------------- | -------------------- |
-| [KMM591000BN](doc/KMM591000BN.pdf)       | KMM591000BN-7 Datasheet      | Samsungs Electronics |
-| [KM44C1000BJ](doc/km44c1000c-cl-csl.pdf) | KM44C1000CJ Datasheet        | Samsungs Electronics |
-| [KM44C1000BJ](doc/km41c1000cj-7.pdf)     | KM41C1000CJ Datasheet        | Samsungs Electronics |
-| [Understanding DRAM Operation]           | Understanding DRAM Operation | IBM                  |
+| Link                                                                 | Description                  | Author               |
+| :------------------------------------------------------------------- | ---------------------------- | -------------------- |
+| [KMM591000BN](doc/KMM591000BN.pdf)                                   | KMM591000BN-7 Datasheet      | Samsungs Electronics |
+| [KM44C1000BJ](doc/km44c1000c-cl-csl.pdf)                             | KM44C1000CJ Datasheet        | Samsungs Electronics |
+| [KM44C1000BJ](doc/km41c1000cj-7.pdf)                                 | KM41C1000CJ Datasheet        | Samsungs Electronics |
+| [Understanding DRAM Operation](doc/Understanding DRAM Operation.pdf) | Understanding DRAM Operation | IBM                  |
 
 ## Circuit
 
@@ -48,6 +50,7 @@ See this [first sketch](arduino/DIMM_KMM591000__3/DIMM_KMM591000__3.ino) that wr
 
 # Todo & next steps
 
+- Implement different Row/Col addresses
 - Implement Fast page writing/reading
 - Use all address and data with, either:
   - serializing input/output with shift-registers (would reduce pins necesarry, but would slow the operation)
