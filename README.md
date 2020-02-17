@@ -51,6 +51,7 @@ See this [first sketch](arduino/DIMM_KMM591000__3/DIMM_KMM591000__3.ino) that wr
 
 # Todo & next steps
 
+- Implement RAM refresh
 - Implement different Row/Col addresses
 - Implement Fast page writing/reading
 - Use all address and data with, either:
