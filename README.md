@@ -11,6 +11,7 @@
 
 In this project I'm driving an old 1MB DRAM SIMM memory module with an Arduino Uno board.
 
+![](pics/IMG_20200102_193541.jpg)
 ![](pics/IMG_20200217_010042.jpg)
 
 The module I use is a KMM591000BN-7 manufactured by Samsungs Electronics in 10/1994.
