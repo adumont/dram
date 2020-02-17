@@ -56,7 +56,6 @@ See this [first sketch](arduino/DIMM_KMM591000__3/DIMM_KMM591000__3.ino) that wr
 - Use all address and data with, either:
   - serializing input/output with shift-registers (would reduce pins necesarry, but would slow the operation)
   - using an Arduino Mega (more GPIO pins)
-- Write 
 - Use Arduino [port registers manipulation](https://www.arduino.cc/en/Reference/PortManipulation) to operate the DRAM
   - May need to reorganize the pins to put each DRAM bus on the same port register of the Arduino, to be able to assert all the pins of a same bus at the same time.
 
