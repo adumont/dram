@@ -27,6 +27,8 @@ void setup() {
   Serial.begin(115200); //start serial communication at 115200 bps
   Serial.println("Let's go");
 
+  initDRAM();
+
   for( int a=0; a<16; a++) {
     Serial.print("ADDR=");
     Serial.println(a);
