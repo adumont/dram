@@ -27,7 +27,7 @@ I have soldered a 30-pins male header so I can plug it on a breadboard.
 | [KMM591000BN](doc/KMM591000BN.pdf)                                   | KMM591000BN-7 Datasheet      | Samsungs Electronics |
 | [KM44C1000BJ](doc/km44c1000c-cl-csl.pdf)                             | KM44C1000CJ Datasheet        | Samsungs Electronics |
 | [KM44C1000BJ](doc/km41c1000cj-7.pdf)                                 | KM41C1000CJ Datasheet        | Samsungs Electronics |
-| [Understanding DRAM Operation](doc/Understanding DRAM Operation.pdf) | Understanding DRAM Operation | IBM                  |
+| [Understanding DRAM Operation](doc/Understanding_DRAM_Operation.pdf) | Understanding DRAM Operation | IBM                  |
 
 ## Circuit
 
