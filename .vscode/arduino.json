@@ -1,0 +1,6 @@
+{
+    "programmer": "AVR ISP",
+    "board": "arduino:avr:uno",
+    "port": "/dev/ttyUSB0",
+    "sketch": "arduino/SIMM_KMM591000__4/SIMM_KMM591000__4.ino"
+}
