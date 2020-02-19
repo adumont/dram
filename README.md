@@ -135,5 +135,5 @@ sum=EF1
 
 # Thanks
 
-- Thanks to juhannuskameli's blog for [his article](https://juhannuskameli.wordpress.com/2014/01/05/playing-with-arduino-and-dram/), from where I have taken the initial code that I have adapted for this project.
+- Thanks to juhannuskameli's blog for [his article](https://juhannuskameli.wordpress.com/2014/01/05/playing-with-arduino-and-dram/), from where I have taken the initial inspiration for the code.
 
