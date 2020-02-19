@@ -196,6 +196,14 @@ void initDRAM() {
   digitalWrite(DIMM_W_  , HIGH);
 
   delay(200); // wait at least 100 microseconds
+
+  // 8 RAS cycle proper device operation in achieved
+  for(char i=0; i<8; i++){
+      digitalWrite(DIMM_RAS_, LOW);
+      delay(1);
+      digitalWrite(DIMM_RAS_, HIGH);
+      delay(1);
+  }
 }
 
 void writeAddr(int A) {
