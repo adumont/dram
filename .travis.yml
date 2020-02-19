@@ -21,7 +21,7 @@ install:
   # We install all the stuff we need
   - source install_env.sh
   # Install boards (Version installed must match the BOARD_VERSION in Makefiles)
-  - install_board arduino:avr:uno:1.6.22
+  - install_board arduino:avr:1.6.22
 
 script:
   # The source above can mess our path, let's go back to sources:
