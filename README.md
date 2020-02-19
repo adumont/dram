@@ -47,7 +47,80 @@ Shematics available as [Fritzing file](arduino/dram.fzz).
 
 ## Code
 
-See this [first sketch](arduino/DIMM_KMM591000__3/DIMM_KMM591000__3.ino) that writes 0 to 15 (and reads the value) at address 0 to 15.
+Code for the [Arduino sketch](arduino/SIMM_KMM591000__4/SIMM_KMM591000__4.ino).
+
+At reset or power up the Arduino should run the DRAM initialization protocol, run some tests that should verify everything is wired correctly, then show a memory dump, and show the instructions:
+
+```
+DRAM Initialization
+Test 1
+Test 2
+Test 3
+
+Memory dump:
+
+   0 1 2 3 4 5 6 7 8 9 A B C D E F 
+0: F F F F F F F F F F F F F F F F 
+1: F F F F F F F F F F F F F F F F 
+2: F F F F F F F F F F F F F F F F 
+3: F F F F F F F F F F F F F F F F 
+4: F F F F F F F F F F F F F F F F 
+5: F F F F F F F F F F F F F F F F 
+6: F F F F F F F F F F F F F F F F 
+7: F F F F F F F F F F F F F F F F 
+8: F F F F F F F F F F F F F F F F 
+9: F F F F F F F F F F F F F F F F 
+A: F F F F F F F F F F F F F F F F 
+B: F F F F F F F F F F F F F F F F 
+C: F F F F F F F F F F F F F F F F 
+D: F F F F F F F F F F F F F F F F 
+E: F F F F F F F F F F F F F F F F 
+F: F F F F F F F F F F F F F F F F 
+
+sum=F00
+End of tests
+
+Instruction:
+w A D: write D(hex) at A(hex)
+r A  : read  data at A(hex)
+f D  : fill all memory with D
+d    : dump memory map (formated)
+D    : dump memory, one line
+z    : refresh
+```
+
+### Writing a value at some address
+
+```
+w A5 0
+d
+```
+Should output:
+
+```
+Memory dump:
+
+   0 1 2 3 4 5 6 7 8 9 A B C D E F 
+0: F F F F F F F F F F F F F F F F 
+1: F F F F F F F F F F F F F F F F 
+2: F F F F F F F F F F F F F F F F 
+3: F F F F F F F F F F F F F F F F 
+4: F F F F F F F F F F F F F F F F 
+5: F F F F F F F F F F F F F F F F 
+6: F F F F F F F F F F F F F F F F 
+7: F F F F F F F F F F F F F F F F 
+8: F F F F F F F F F F F F F F F F 
+9: F F F F F F F F F F F F F F F F 
+A: F F F F F 0 F F F F F F F F F F 
+B: F F F F F F F F F F F F F F F F 
+C: F F F F F F F F F F F F F F F F 
+D: F F F F F F F F F F F F F F F F 
+E: F F F F F F F F F F F F F F F F 
+F: F F F F F F F F F F F F F F F F 
+
+sum=EF1
+
+```
 
 # Todo & next steps
 

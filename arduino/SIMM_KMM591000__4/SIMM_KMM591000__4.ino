@@ -32,11 +32,11 @@
 #define COMPOSE(B3,B2,B1,B0) ( (B3)<<3 + (B2)<<2 + (B1)<<1 + (B0)<<0 )
 
 void setup() {
-  initDRAM();
-
   // put your setup code here, to run once:
   Serial.begin(115200); //start serial communication at 115200 bps
-  Serial.println("Let's go");
+  Serial.println("DRAM Initialization");
+
+  initDRAM();
 
 //  Serial.println("Test 1");
 //  for( int a=0; a<256; a++) {
@@ -58,7 +58,7 @@ void setup() {
 //    }
 //  }
 
-  Serial.println("Test 2");
+  Serial.println("Test 1");
   for( int a=0; a<256; a++) {
     for( int d=0; d<16; d++) {
       writeDRAM(a,d);
@@ -77,7 +77,7 @@ void setup() {
   }
 
 
-  Serial.println("Test 3");
+  Serial.println("Test 2");
   for( int d=0; d<16; d++) {
 //    Serial.print("DATA=");
 //    Serial.println(d);
@@ -97,7 +97,7 @@ void setup() {
     }
   }
 
-  Serial.println("Test 4");
+  Serial.println("Test 3");
   assert( (int)MSB(16,4) == 1 );
   assert( (int)LSB(16,4) == 0 );
 
@@ -116,6 +116,14 @@ void setup() {
   assert( dumpDRAM() == 3840 ); // F00
 
   Serial.println("End of tests");
+  Serial.println();
+  Serial.println("Instruction:");
+  Serial.println("w A D: write D(hex) at A(hex)");
+  Serial.println("r A  : read  data at A(hex)");
+  Serial.println("f D  : fill all memory with D");
+  Serial.println("d    : dump memory map (formated)");
+  Serial.println("D    : dump memory, one line");
+  Serial.println("z    : refresh");
 
 }
 
@@ -127,25 +135,36 @@ int a, d;
 
 void loop()
 {
-   c="";
+   c=0;
    a=0;
    d=0;
-  //Serial.println("Enter instruction");
   if ((Serial.available()>0)) {
     s = Serial.readStringUntil('\n');
     s.toCharArray(cbuff,s.length()+1);
     sscanf(cbuff, "%c %x %x", &c, &a, &d);
-    if(c==119) { // w
-      writeDRAM(a,d);
-    }
-    if(c==114) { // r 
-      Serial.print("[");
-      Serial.print(a,HEX);
-      Serial.print("]=");
-      Serial.println((int)readDRAM(a),HEX);
-    }
-    if(c==115) { // s
-      dumpDRAM();
+
+    switch(c) {
+      case 'w':
+        writeDRAM(a,d);
+        break;
+      case 'r':
+        Serial.print("[");
+        Serial.print(a,HEX);
+        Serial.print("]=");
+        Serial.println((int)readDRAM(a),HEX);
+        break;
+      case 'f':
+        fillDRAM(a);
+        break;
+      case 'd':
+        dumpDRAM();
+        break;
+      case 'D':
+        dumpDRAMoneLine();
+        break;
+      case 'z':
+        refreshDRAM();
+        break;
     }
   }
 }
@@ -175,8 +194,22 @@ int dumpDRAM() {
   }
   Serial.println("");
   Serial.print("sum=");
-  Serial.print(sum,HEX);
-  Serial.println("");
+  Serial.println(sum,HEX);
+  return sum;
+}
+
+int dumpDRAMoneLine() {
+  int sum, t;
+  sum= 0;
+  for(char i=0; i<16; i++) {
+    for(char j=0; j<16; j++) {
+      t=(int)readDRAM(16*i+j);
+      sum+=t;
+      Serial.print(t,HEX);
+    }
+  }
+  Serial.print(" ");
+  Serial.println(sum,HEX);
   return sum;
 }
 
@@ -254,6 +287,19 @@ void writeDRAM(int A, char D) {
   delay(0);
 }
 
+void fillDRAM(char D) {
+  for(int A=0; A<256; A++) {
+    writeDRAM(A,D);
+  }
+}
+
+void refreshDRAM() {
+  for(char A=0; A<16; A++) {
+    writeAddr(A);
+    digitalWrite(DIMM_RAS_, LOW);
+    digitalWrite(DIMM_RAS_, HIGH);
+  }
+}
 char readDRAM(int A) {
   int rd = 0; // Data we'll read
 
