@@ -124,7 +124,8 @@ sum=EF1
 
 # Todo & next steps
 
-- [x] ~~Implement RAM refresh~~
+- [x] ~~Implement on-demand RAM refresh~~
+- [ ] Implement periodic RAM refresh
 - [x] ~~Implement different Row/Col addresses~~
 - [ ] Implement Fast page writing/reading
 - [ ] Use all address and data with, either:
