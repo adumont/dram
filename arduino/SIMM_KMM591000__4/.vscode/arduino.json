@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:uno",
+    "programmer": "AVR ISP",
+    "sketch": "DIMM_KMM591000__3.ino",
+    "port": "/dev/ttyUSB0"
+}
