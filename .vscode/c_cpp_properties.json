@@ -4,10 +4,13 @@
             "name": "Linux",
             "includePath": [
                 "/home/adumont/opt/arduino/tools/**",
-                "/home/adumont/opt/arduino/hardware/arduino/avr/**"
+                "/home/adumont/opt/arduino/hardware/arduino/avr/**",
+                "/home/adumont/.arduino15/packages/arduino/hardware/avr/1.8.2/**",
+                "/home/adumont/.arduino15/packages/arduino/tools/**"
             ],
             "forcedInclude": [
-                "/home/adumont/opt/arduino/hardware/arduino/avr/cores/arduino/Arduino.h"
+                "/home/adumont/opt/arduino/hardware/arduino/avr/cores/arduino/Arduino.h",
+                "/home/adumont/.arduino15/packages/arduino/hardware/avr/1.8.2/cores/arduino/Arduino.h"
             ],
             "intelliSenseMode": "gcc-x64",
             "compilerPath": "/usr/bin/clang",
